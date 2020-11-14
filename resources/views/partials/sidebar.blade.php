@@ -15,11 +15,27 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" href="{{route('category.createForm')}}">
+                    <span data-feather="file"></span>
+                    Category
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('category.list')}}">
+                    <span data-feather="file"></span>
+                    Category List
+                </a>
+            </li>
+
+
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('product')}}">
                     <span data-feather="file"></span>
                     Product
                 </a>
             </li>
+
 
         </ul>
 

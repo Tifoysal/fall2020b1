@@ -18,6 +18,12 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/order','OrderController@list')->name('order');
+
+//product
 Route::get('/product','ProductController@list')->name('product');
 Route::post('/product/create','ProductController@createProduct')->name('product.create');
 
+//category
+Route::get('/category','CategoryController@showCreateForm')->name('category.createForm');
+Route::post('/category/store','CategoryController@store')->name('category.store');
+Route::get('/category/list','CategoryController@list')->name('category.list');
