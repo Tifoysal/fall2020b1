@@ -20,8 +20,9 @@ Route::get('/', function () {
 Route::get('/order','OrderController@list')->name('order');
 
 //product
-Route::get('/product','ProductController@list')->name('product');
+Route::get('/product','ProductController@showForm')->name('product');
 Route::post('/product/create','ProductController@createProduct')->name('product.create');
+Route::get('/product/list','ProductController@list')->name('product.list');
 
 //category
 Route::get('/category','CategoryController@showCreateForm')->name('category.createForm');

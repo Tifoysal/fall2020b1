@@ -36,6 +36,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('product.list')}}">
+                    <span data-feather="file"></span>
+                    Product List
+                </a>
+            </li>
+
 
         </ul>
 
