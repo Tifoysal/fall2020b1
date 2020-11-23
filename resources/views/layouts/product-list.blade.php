@@ -2,6 +2,10 @@
 
 @section('page')
 
+    @if(session()->has('message'))
+        <p class="alert alert-success">{{session()->get('message')}}</p>
+    @endif
+
     <table class="table">
         <thead>
         <tr>
@@ -14,16 +18,21 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($list as $data)
+        @foreach($list as $key=>$data)
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{$key+1}}</th>
                 <td>{{$data->name}}</td>
-                <td>{{$data->category_id}}</td>
+                <td>{{$data->categoryRelation->name}}</td>
                 <td>{{$data->price}}</td>
                 <td>{{$data->status}}</td>
-                <td>@mdo</td>
+                <td>
+                    <a class="btn btn-warning" href="">Edit</a>
+                    <a class="btn btn-danger" href="{{route('product.delete',$data->id)}}">Delete</a>
+                    <a class="btn btn-info" href="">View</a>
+                </td>
             </tr>
         @endforeach
         </tbody>
     </table>
+    {{$list->links()}}
 @stop

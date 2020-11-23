@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->double('price',8,2);
             $table->string('status')->default('active');
             $table->text('description')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

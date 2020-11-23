@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'product_name'=>'required',
-            'price'=>'required|min:5',
+            'price'=>'required',
             'category_id'=>'required|numeric'
         ]);
 
@@ -39,8 +39,21 @@ class ProductController extends Controller
 
     public function list()
     {
-        $list=Product::all();
-
+        $list=Product::with('categoryRelation')->paginate(10);
+//        dd($list);
         return view('layouts.product-list',compact('list'));
+    }
+
+    public function delete($id)
+    {
+       $product=Product::find($id);
+       if(!empty($product))
+       {
+           $product->delete();
+           $message="Product deleted Successfully";
+       }else{
+           $message="No data found.";
+       }
+        return redirect()->back()->with('message',$message);
     }
 }

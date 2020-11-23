@@ -1,5 +1,5 @@
 @extends('master')
 
 @section('page')
-<h1>hello dfshdfhasdjfsss</h1>
+<h1>hello</h1>
 @stop
