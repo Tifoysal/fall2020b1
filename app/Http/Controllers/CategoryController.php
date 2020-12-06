@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -32,5 +33,11 @@ class CategoryController extends Controller
     {
         $list=Category::all();
         return view('layouts.category-list',compact('list'));
+    }
+
+    public function viewAllProduct($id)
+    {
+        $products=Product::where('category_id',$id)->paginate(10);
+       return view('layouts.product-list-under-category',compact('products'));
     }
 }

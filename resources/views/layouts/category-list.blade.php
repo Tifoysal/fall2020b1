@@ -17,7 +17,9 @@
             <th scope="row">1</th>
             <td>{{$data->name}}</td>
             <td>{{$data->status}}</td>
-            <td>@mdo</td>
+            <td>
+                <a class="btn btn-primary" href="{{route('category.product.list',$data->id)}}">View all Product</a>
+            </td>
         </tr>
         @endforeach
         </tbody>

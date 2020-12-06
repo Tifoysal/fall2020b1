@@ -56,4 +56,38 @@ class ProductController extends Controller
        }
         return redirect()->back()->with('message',$message);
     }
+
+    public function viewProduct($p_id)
+    {
+            $product=Product::find($p_id);
+            return view('layouts.single_product',compact('product'));
+    }
+
+    public function editProduct($p_id)
+    {
+        $product=Product::find($p_id);
+        $categories=Category::all();
+        return view('layouts.product_edit',compact('categories','product'));
+
+    }
+
+    public function updateProduct(Request $request,$id)
+    {
+        $request->validate([
+            'product_name'=>'required',
+            'price'=>'required',
+            'category_id'=>'required|numeric'
+        ]);
+       $product=Product::find($id);
+       $product->update([
+           'name'=>$request->product_name,
+           'price'=>$request->price,
+           'description'=>$request->description,
+           'category_id'=>$request->category_id
+       ]);
+
+       return redirect()->back()->with('message','Product Updated Successfully.');
+    }
+
+
 }

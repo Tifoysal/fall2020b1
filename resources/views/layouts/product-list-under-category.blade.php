@@ -18,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($list as $key=>$data)
+        @foreach($products as $key=>$data)
             <tr>
                 <th scope="row">{{$key+1}}</th>
                 <td>{{$data->name}}</td>
@@ -34,5 +34,5 @@
         @endforeach
         </tbody>
     </table>
-    {{$list->links()}}
+    {{$products->links()}}
 @stop

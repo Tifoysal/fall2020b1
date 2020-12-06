@@ -25,8 +25,13 @@ Route::get('/product','ProductController@showForm')->name('product');
 Route::post('/product/create','ProductController@createProduct')->name('product.create');
 Route::get('/product/list','ProductController@list')->name('product.list');
 Route::get('/product/delete/{id}','ProductController@delete')->name('product.delete');
+Route::get('/product/view/{id}','ProductController@viewProduct')->name('product.view');
+Route::get('/product/edit/{id}','ProductController@editProduct')->name('product.edit');
+Route::put('/product/update/{id}','ProductController@updateProduct')->name('product.update');
+
 
 //category
 Route::get('/category','CategoryController@showCreateForm')->name('category.createForm');
 Route::post('/category/store','CategoryController@store')->name('category.store');
 Route::get('/category/list','CategoryController@list')->name('category.list');
+Route::get('/category/product/list/{c_id}','CategoryController@viewAllProduct')->name('category.product.list');
