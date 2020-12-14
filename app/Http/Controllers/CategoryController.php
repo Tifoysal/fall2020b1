@@ -18,7 +18,7 @@ class CategoryController extends Controller
         $data=$request->except('_token');
 
         //if input field name and column name are same
-//        Category::create($data);
+        // Category::create($data);
 
        Category::create([
            'name'=>$request->category_name,
@@ -26,7 +26,6 @@ class CategoryController extends Controller
        ]);
 
        return redirect()->back();
-
     }
 
     public function list()
