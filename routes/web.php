@@ -45,8 +45,16 @@ Route::group(['middleware'=>'auth'],function (){
 });
 
 //frontend routes
-Route::get('/','Frontend\HomeController@home')->name('frontend.home');
-Route::get('/products/category/{id}','Frontend\HomeController@productsUnderCategory')->name('category.products');
+
+Route::group(['namespace'=>'Frontend'],function ()
+{
+    Route::get('/','HomeController@home')->name('frontend.home');
+    Route::get('/products/category/{id}','HomeController@productsUnderCategory')->name('category.products');
+
+    //user route here
+    Route::post('user/login','UserController@login')->name('user.login');
+    Route::post('user/registration','UserController@registration')->name('user.registration');
+});
 
 
 
