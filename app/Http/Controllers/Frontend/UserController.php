@@ -11,17 +11,30 @@ class UserController extends Controller
 {
     public function registration(Request $request)
     {
+
        $request->validate([
           'name'=>'required',
           'email'=>'required|email|unique:users',
            'password'=>'required'
        ]);
+        $file_name='';
 
+//        step1- check has file
+            if($request->hasFile('image'))
+            {
+                $image=$request->file('image');
+               //step2- generate unique name
+                $file_name=date('Ymdhms').'.'.$image->getClientOriginalExtension();
+               //step 3- store file with name
+                $image->storeAs('users',$file_name);
+
+            }
 
         User::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>bcrypt($request->password)
+            'password'=>bcrypt($request->password),
+            'image'=>$file_name
         ]);
 
         return redirect()->back()->with('message','User Registration Successful.');
